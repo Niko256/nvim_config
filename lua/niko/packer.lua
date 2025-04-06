@@ -13,8 +13,9 @@ return require('packer').startup(function(use)
   use 'DaikyXendo/nvim-material-icon'
 
   use 'voldikss/vim-floaterm'
- 
+  
   use "FabianWirth/search.nvim"
+
 
   use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} }
 
@@ -35,6 +36,11 @@ return require('packer').startup(function(use)
         -- change default options here
       }
     end
+  }
+
+  
+  use {
+    'tomasky/bookmarks.nvim',
   }
 
   use {
