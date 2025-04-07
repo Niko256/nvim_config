@@ -12,26 +12,17 @@ require('navigator').setup({
     disable_filetypes = { 'help', 'guihua', 'text' },
   },
 
-  icons = { 
+  icons = {
     icons = true,
-    code_action_icon = "💡",  
-    code_lens_action_icon = "👁️",
-    
-    -- diagnostics 
-    diagnostic_head = '🧐',
-    diagnostic_warn = '⚠️',
-    diagnostic_info = 'ℹ️',
-    diagnostic_hint = '💡',
-    diagnostic_head_severity_1 = "🔥", 
-    diagnostic_head_severity_2 = "⚠️",
-    diagnostic_head_severity_3 = "ℹ️",
-    
-    -- navigation 
-    reference_icon = "🔗",  -- refs 
-    incoming_calls_icon = "⬇️",  -- Incoming calls 
-    outgoing_calls_icon = "⬆️",  -- Outcoming calls 
-    
-    -- symbols 
+    code_action_icon = "🔻",  
+    code_lens_action_icon = "🐈",
+    diagnostic_hint = '🧐',
+
+    fold = {
+      prefix = '⚡',  
+      separator = '',
+    },
+
     symbol_icons = {
       File = "📄",
       Module = "📦",
@@ -50,20 +41,13 @@ require('navigator').setup({
       Boolean = "⊨",
       Array = "[]",
       Object = "⦿",
-      Key = "🔑",
       Null = "∅",
       EnumMember = "",
-      Struct = "🏗️",
-      Event = "🎫",
       Operator = "+",
       TypeParameter = "𝑇",
     },
-    
-    fold = {
-      prefix = '⚡', 
-      separator = '',
-    },
   },
+
 
   mason = true,
 
@@ -107,7 +91,7 @@ require('navigator').setup({
     diagnostic = {
       underline = true,
       virtual_text = true,
-      update_in_insert = true,
+      update_in_insert = false,
     },
 
     servers = {'cmake', 'ltex'},
