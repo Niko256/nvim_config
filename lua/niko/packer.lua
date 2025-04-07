@@ -20,6 +20,10 @@ return require('packer').startup(function(use)
     "danymat/neogen",
   }
 
+  use { 'camspiers/snap' }
+
+  use "meznaric/conmenu"
+
   use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} }
 
   use {
@@ -42,6 +46,13 @@ return require('packer').startup(function(use)
   }
 
   use {
+    'goolord/alpha-nvim',
+    config = function ()
+        require'alpha'.setup(require'alpha.themes.dashboard'.config)
+    end
+  }
+
+  use {
     'olivercederborg/poimandres.nvim',
     config = function()
     require('poimandres').setup {
@@ -60,6 +71,13 @@ return require('packer').startup(function(use)
     end
   }
 
+  use({
+    'ray-x/navigator.lua',
+    requires = {
+        { 'ray-x/guihua.lua', run = 'cd lua/fzy && make' },
+        { 'neovim/nvim-lspconfig' },
+    },
+  })
   
   use {
     'tomasky/bookmarks.nvim',
@@ -109,7 +127,6 @@ return require('packer').startup(function(use)
   use 'kyazdani42/nvim-web-devicons'
   use 'MunifTanjim/nui.nvim'
   use 'hrsh7th/nvim-cmp'
-  use 'pieces-app/plugin_neovim'
 
   use {
     'VonHeikemen/lsp-zero.nvim',
@@ -191,7 +208,6 @@ return require('packer').startup(function(use)
   end,
   })   
   
- -- install without yarn or npm
   use({
     "iamcco/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end,

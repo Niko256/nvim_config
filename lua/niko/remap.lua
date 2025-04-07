@@ -1,9 +1,6 @@
 -- Set space as the leader key
 vim.g.mapleader = " "
 
--- Open netrw file explorer with leader+pv
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
-
 -- Toggle NvimTree file explorer with leader+q
 vim.api.nvim_set_keymap('n', '<leader>q', ':NvimTreeToggle<CR>', { noremap = true, silent = true})
 

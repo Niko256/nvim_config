@@ -6,7 +6,7 @@ require('bookmarks').setup {
     ["@w"] = "⚠️ ", -- mark annotation startswith @w ,signs this icon as `Warn`
     ["@f"] = "⛏ ", -- mark annotation startswith @f ,signs this icon as `Fix`
     ["@n"] = " ", -- mark annotation startswith @n ,signs this icon as `Note`
-  },
+},
   on_attach = function(bufnr)
     local bm = require "bookmarks"
     local map = vim.keymap.set
