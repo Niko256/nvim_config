@@ -61,6 +61,26 @@ return require('packer').startup(function(use)
     end
   }
 
+  use "kyazdani42/blue-moon"
+
+  use "idr4n/github-monochrome.nvim"
+
+  use "projekt0n/github-nvim-theme"
+
+  use { 'embark-theme/vim', as = 'embark' }
+
+  use "yorumicolors/yorumi.nvim"
+
+  use "comfysage/twilight-moon"
+
+  use 'zaldih/themery.nvim'
+
+  use "bluz71/vim-moonfly-colors"
+
+  use "rose-pine/neovim"
+
+  use "vague2k/vague.nvim"
+
   use {
     'declancm/cinnamon.nvim',
     tag = '*', -- use latest release
