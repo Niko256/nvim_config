@@ -91,6 +91,14 @@ return require('packer').startup(function(use)
     end
   }
 
+  use {
+    'ojroques/nvim-lspfuzzy',
+    requires = {
+      {'junegunn/fzf'},
+      {'junegunn/fzf.vim'},  
+    },
+  }
+
   use({
     'ray-x/navigator.lua',
     requires = {
