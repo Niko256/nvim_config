@@ -61,6 +61,8 @@ return require('packer').startup(function(use)
     end
   }
 
+  use "norcalli/nvim-colorizer.lua"
+
   use "kyazdani42/blue-moon"
 
   use "idr4n/github-monochrome.nvim"

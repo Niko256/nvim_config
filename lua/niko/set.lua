@@ -26,7 +26,14 @@ vim.opt.updatetime = 50
 vim.g.mapleader = " "
 
 
+vim.api.nvim_create_autocmd("ColorScheme", {
+    pattern = "*",
+    callback = function()
+        vim.cmd('highlight Normal guibg=#02020b')
+        vim.cmd('highlight NonText guibg=#02020b')
+    end,
+})
+
 vim.cmd([[
 autocmd BufWritePost *.rs silent! !rustfmt %
 ]])
-
