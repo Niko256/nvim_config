@@ -218,6 +218,8 @@ return require('packer').startup(function(use)
 
   use 'folke/noice.nvim'
 
+  use 'rcarriga/nvim-notify'
+
   use {
     "SmiteshP/nvim-navbuddy",
     requires = {
