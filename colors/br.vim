@@ -3,7 +3,7 @@ syntax reset
 let g:colors_name = "br"
 set background=dark
 set t_Co=256
-hi Normal guifg=#cbe2e2 ctermbg=NONE guibg=#131212 gui=NONE
+hi Normal guifg=#ADD8E6 ctermbg=NONE guibg=#131212 gui=NONE
 
 hi DiffText guifg=#f5386d guibg=NONE
 hi ErrorMsg guifg=#f5386d guibg=NONE
@@ -24,7 +24,7 @@ hi Repeat guifg=#dcf3f0 guibg=NONE
 hi DiffAdd guifg=#dcf3f0 guibg=NONE
 hi GitGutterAdd guifg=#dcf3f0 guibg=NONE
 hi cssIncludeKeyword guifg=#dcf3f0 guibg=NONE
-hi Keyword guifg=#dcf3f0 guibg=NONE
+hi Normal guifg=#ADD8E6 ctermbg=NONE guibg=#131212 gui=NONE
 hi IncSearch guifg=#f0f3dd guibg=NONE
 hi Title guifg=#f0f3dd guibg=NONE
 hi PreCondit guifg=#f0f3dd guibg=NONE
@@ -54,14 +54,14 @@ hi Include guifg=#94326c guibg=NONE
 hi Storage guifg=#94326c guibg=NONE
 hi cssClassName guifg=#94326c guibg=NONE
 hi cssClassNameDot guifg=#94326c guibg=NONE
-hi Statement guifg=#d4f1f1 guibg=NONE
+hi Statement guifg=#b3e8ed guibg=NONE gui=NONE
 hi Operator guifg=#d4f1f1 guibg=NONE
 hi cssAttr guifg=#d4f1f1 guibg=NONE
 
 
-hi Pmenu guifg=#cbe2e2 guibg=#000205
+hi Pmenu guifg=#afeeee guibg=#000205
 hi SignColumn guibg=#131212
-hi Title guifg=#cbe2e2
+hi Title guifg=#afeeee
 hi LineNr guifg=#6a7b8a guibg=#131212
 hi NonText guifg=#8d8c8d guibg=#131212
 hi Comment guifg=#8d8c8d gui=italic
@@ -69,9 +69,9 @@ hi SpecialComment guifg=#8d8c8d gui=italic guibg=NONE
 hi CursorLine guibg=#000205 gui=NONE
 hi TabLineFill gui=NONE guibg=#000205
 hi TabLine guifg=#519090 guibg=#000205 gui=NONE
-hi StatusLine gui=bold guibg=#000205 guifg=#cbe2e2
-hi StatusLineNC gui=NONE guibg=#131212 guifg=#cbe2e2
-hi Search guibg=#8d8c8d guifg=#cbe2e2
+hi StatusLine gui=bold guibg=#000205 guifg=#afeeee
+hi StatusLineNC gui=NONE guibg=#131212 guifg=#afeeee
+hi Search guibg=#8d8c8d guifg=#afeeee
 hi VertSplit gui=NONE guifg=#000205 guibg=NONE
 hi Visual guibg=#2a3a4a gui=NONE  
 hi Underlined gui=NONE
