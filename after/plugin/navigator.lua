@@ -58,7 +58,7 @@ require('navigator').setup({
     {key = "gd", func = require('navigator.definition').definition, desc = "Go to definition"},
     {key = "gi", func = vim.lsp.buf.implementation, desc = "Go to implementation"},
     {key = "gt", func = require('navigator.definition').type_definition, desc = "Go to type definition"},
-    {key = "g0", func = require('navigator.symbols').document_symbol, desc = "Document symbols"},
+    {key = "gs", func = require('navigator.symbols').document_symbol, desc = "Document symbols"},
     {key = "gW", func = require('navigator.workspace').workspace_symbol_fuzzy, desc = "Workspace symbol fuzzy finder"},
     {key = "<Leader>fm", mode = 'n', func = require('navigator.formatting').format, desc = "Format buffer"},
     {key = "<Leader>fm", mode = 'v', func = require('navigator.formatting').range_format, desc = "Format selection"},
@@ -89,8 +89,8 @@ require('navigator').setup({
     disable_format_cap = {"sqlls", "lua_ls", "gopls"},
 
     diagnostic = {
-      underline = true,
-      virtual_text = true,
+      underline = false,
+      virtual_text = false,
       update_in_insert = false,
     },
 
@@ -100,7 +100,7 @@ require('navigator').setup({
       on_attach = function(client)
         client.server_capabilities.documentFormattingProvider = false
       end,
-      settings = { gopls = { gofumpt = false } }
+      settings = { gopls = { gofumpt = true } }
     },
 
     lua_ls = {
@@ -148,7 +148,7 @@ require('navigator').setup({
         '--clang-tidy',
         '--header-insertion=iwyu'
       },
-      filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cc' },
+      filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cc', 'tpp' },
       on_attach = function(client)
         client.server_capabilities.documentFormattingProvider = false
       end

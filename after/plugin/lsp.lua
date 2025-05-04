@@ -1,21 +1,3 @@
-vim.api.nvim_create_autocmd('LspAttach', {
-  group = vim.api.nvim_create_augroup('user_lsp_attach', {clear = true}),
-  callback = function(event)
-    local opts = {buffer = event.buf}
-
-    vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts)
-    vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, opts)
-    vim.keymap.set('n', '<leader>vws', function() vim.lsp.buf.workspace_symbol() end, opts)
-    vim.keymap.set('n', '<leader>vd', function() vim.diagnostic.open_float() end, opts)
-    vim.keymap.set('n', '[d', function() vim.diagnostic.goto_next() end, opts)
-    vim.keymap.set('n', ']d', function() vim.diagnostic.goto_prev() end, opts)
-    vim.keymap.set('n', '<leader>vca', function() vim.lsp.buf.code_action() end, opts)
-    vim.keymap.set('n', '<leader>vrr', function() vim.lsp.buf.references() end, opts)
-    vim.keymap.set('n', '<leader>vrn', function() vim.lsp.buf.rename() end, opts)
-    vim.keymap.set('i', '<C-h>', function() vim.lsp.buf.signature_help() end, opts)
-  end,
-})
-
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 require('mason').setup({})
@@ -85,19 +67,6 @@ cmp.setup({
   },
 })
 
-require('lspconfig').clangd.setup({
-  capabilities = lsp_capabilities,
-  settings = {
-    clangd = {
-      fallbackFlags = { "-std=c++20" },
-      diagnostics = {
-        enable = true,
-        suppress = { "missingInclude" },
-      },
-    },
-  },
-})
-
 require('nvim-treesitter.configs').setup({
   ensure_installed = { "c", "cpp", "lua", "vim", "query", "rust" },
   sync_install = false,
@@ -129,9 +98,80 @@ local on_attach = function(client, bufnr)
   end
 end
 
+
+
+vim.fn.sign_define("DiagnosticSignError", {text = "", texthl = "DiagnosticError"})
+vim.fn.sign_define("DiagnosticSignWarn", {text = "", texthl = "DiagnosticWarn"})
+vim.fn.sign_define("DiagnosticSignInfo", {text = "", texthl = "DiagnosticInfo"})
+vim.fn.sign_define("DiagnosticSignHint", {text = "", texthl = "DiagnosticHint"})
+
+vim.diagnostic.config({
+  virtual_text = false, -- Disable inline diagnostics
+  signs = true, -- Keep gutter signs
+  underline = false, -- Disable underline
+  update_in_insert = false,
+  severity_sort = true,
+  float = {
+    border = "rounded",
+    source = "always",
+    format = function(diagnostic)
+      return string.format(
+        "%s (%s)",
+        diagnostic.message,
+        diagnostic.source or "LSP"
+      )
+    end,
+  }
+})
+
+local rust_opts = {
+  tools = {
+    hover_actions = { auto_focus = true },
+    inlay_hints = { auto = true },
+  },
+  server = {
+    settings = {
+      ["rust-analyzer"] = {
+        diagnostics = {
+          enable = true,
+          disabled = {"unresolved-proc-macro"},
+          experimental = { enable = true },
+        }
+      }
+    }
+  }
+}
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('user_lsp_attach', {clear = true}),
+  callback = function(event)
+    local opts = {buffer = event.buf}
+
+    vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+      vim.lsp.diagnostic.on_publish_diagnostics, {
+        virtual_text = { spacing = 2, prefix = "●" },
+        signs = true,
+        underline = false,
+      }
+    )
+
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', '<leader>v', function()
+      vim.diagnostic.open_float({
+        focusable = false,
+        border = "rounded",
+        header = "",
+        padding = 0,
+      })
+    end, opts)
+    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+  end,
+})
+
 require('lspconfig').clangd.setup({
   capabilities = lsp_capabilities,
-  on_attach = on_attach,  
   cmd = {
     "clangd",
     "--background-index",
@@ -141,10 +181,7 @@ require('lspconfig').clangd.setup({
   settings = {
     clangd = {
       fallbackFlags = { "-std=c++20" },
-      diagnostics = {
-        enable = true,
-        suppress = { "missingInclude" },
-      },
-    },
-  },
+      diagnostics = { enable = true }
+    }
+  }
 })

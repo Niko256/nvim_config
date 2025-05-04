@@ -46,6 +46,12 @@ return require('packer').startup(function(use)
   }
 
   use {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = true
+  }
+
+  use {
     'goolord/alpha-nvim',
     config = function ()
         require'alpha'.setup(require'alpha.themes.dashboard'.config)
@@ -119,6 +125,9 @@ return require('packer').startup(function(use)
       require('wilder').setup()
     end,
   }
+
+  use "melmass/echo.nvim"
+
 
   use "numToStr/FTerm.nvim"
 
