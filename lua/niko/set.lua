@@ -37,3 +37,20 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 vim.cmd([[
 autocmd BufWritePost *.rs silent! !rustfmt %
 ]])
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+    pattern = "*",
+    callback = function()
+        vim.cmd.highlight("Normal guibg=NONE ctermbg=NONE")
+        vim.cmd.highlight("NormalNC guibg=NONE ctermbg=NONE")
+        vim.cmd.highlight("SignColumn guibg=NONE ctermbg=NONE")
+        vim.cmd.highlight("LineNr guibg=NONE ctermbg=NONE")
+        vim.cmd.highlight("EndOfBuffer guibg=NONE ctermbg=NONE")
+    end,
+})
+
+vim.cmd.highlight("Normal guibg=NONE ctermbg=NONE")
+vim.cmd.highlight("NormalNC guibg=NONE ctermbg=NONE")
+vim.cmd.highlight("SignColumn guibg=NONE ctermbg=NONE")
+vim.cmd.highlight("LineNr guibg=NONE ctermbg=NONE")
+vim.cmd.highlight("EndOfBuffer guibg=NONE ctermbg=NONE")
