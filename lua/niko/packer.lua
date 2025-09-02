@@ -62,6 +62,8 @@ return require('packer').startup(function(use)
   }
 
   use "norcalli/nvim-colorizer.lua"
+    
+  use "bassamsdata/namu.nvim"
 
   use "kyazdani42/blue-moon"
 
