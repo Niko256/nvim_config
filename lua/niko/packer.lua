@@ -10,6 +10,11 @@ return require('packer').startup(function(use)
 
   use "EdenEast/nightfox.nvim" -- Packer
 
+  use {
+    'kkoomen/vim-doge',
+    run = ':call doge#install()'
+  }
+
   use 'DaikyXendo/nvim-material-icon'
 
   use 'voldikss/vim-floaterm'
@@ -44,6 +49,7 @@ return require('packer').startup(function(use)
     requires = { 'mrcjkb/rustaceanvim' },
     after = 'rustaceanvim'  
   }
+
 
   use {
     'goolord/alpha-nvim',
