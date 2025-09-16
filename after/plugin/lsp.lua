@@ -76,6 +76,7 @@ require('mason-lspconfig').setup({
                     "--fallback-style=llvm",
                     "--enable-config",
                 },
+                filetypes = { "c", "cpp", "cc", "cxx", "c++", "objc", "objcpp", "tpp" },
                 settings = {
                     clangd = {
                         fallbackFlags = { "-std=c++23" },
